@@ -89,7 +89,7 @@ function isGameFinish() {
     divRestart.style = 'display:flex';
 
     btnRestart.addEventListener('click', () => {
-        window.
+        location.reload();
     })
 }
 
