@@ -129,7 +129,7 @@ function createElementFront(card){
     frontCardElement.classList.add('flex')
      
     const imgFrontCard  = document.createElement('img');
-    imgFrontCard.src = '../images/' + card.icon + '.png';
+    imgFrontCard.src = '../assets/' + card.icon + '.png';
 
     frontCardElement.appendChild(imgFrontCard);
 
