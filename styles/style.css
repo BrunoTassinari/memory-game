@@ -62,6 +62,10 @@
     top: 0px;
 }
 
+.card-back img{
+    width: 50%;
+}
+
 .card-back:hover{
     background-color: #069ac7
 }

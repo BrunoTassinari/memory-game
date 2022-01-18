@@ -20,7 +20,7 @@ let cards = null;
 
 startGame();
 
-function startGame() {
+async function startGame() {
     let cards = createCardsFromTechs(techs);
     shuffle(cards);
     insertCardTable(cards); 
@@ -104,7 +104,7 @@ function createCardsFromTechs(techs){
 
 }
 
-function insertCardTable(cards){
+async function insertCardTable(cards){
     const tableCard = document.getElementById('game-board');
 
     cards.forEach((card) => {        
@@ -129,7 +129,7 @@ function createElementFront(card){
     frontCardElement.classList.add('flex')
      
     const imgFrontCard  = document.createElement('img');
-    imgFrontCard.src = '../images/' + card.icon + '.png';
+    imgFrontCard.src = './assets/' + card.icon + '.png';
 
     frontCardElement.appendChild(imgFrontCard);
 
@@ -142,7 +142,8 @@ function creteElementeBack(card){
     backCardElement.classList.add(BACK);
     backCardElement.classList.add('flex');
 
-    const contentOfBack =  document.createTextNode('</>');
+    const contentOfBack =  document.createElement('img');
+    contentOfBack.src = './assets/icon.png'
 
     backCardElement.appendChild(contentOfBack);
 
