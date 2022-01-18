@@ -38,14 +38,26 @@ function verifyPlayTurn(cards) {
     const cardItem = document.getElementById(card.id);
     cardItem.addEventListener("click", () => {
       if (playTurn != 0) {
-        if (playTurn == 2 && cardTwo == null && !cardItem.classList.contains('click')) {
+        if (
+          playTurn == 2 &&
+          cardTwo == null &&
+          !cardItem.classList.contains("click") &&
+          !cardItem.classList.contains("flip")
+        ) {
           cardTwo = cardItem;
           cardTwo.classList.add("flip");
           playTurn--;
-        } else if (playTurn == 1 && cardOne == null && !cardItem.classList.contains('click')) {
-          cardOne = cardItem;
-          cardOne.classList.add("flip");
-          playTurn = 2;
+        } else if (
+          playTurn == 1 &&
+          cardOne == null &&
+          !cardItem.classList.contains("click") &&
+          !cardItem.classList.contains("flip")
+        ) {
+          if (cardItem != cardTwo) {
+            cardOne = cardItem;
+            cardOne.classList.add("flip");
+            playTurn = 2;
+          }
         }
 
         if (cardOne != null && cardTwo != null) {
@@ -61,14 +73,14 @@ function verifyPlayTurn(cards) {
               disableCards({ cardOne, cardTwo });
               countToWin++;
 
-              if(countToWin == 10){
-                  isGameFinish();
+              if (countToWin == 10) {
+                isGameFinish();
               }
             }
 
             cardOne = null;
             cardTwo = null;
-          }, 500);
+          },350);
         }
       }
 
@@ -84,13 +96,12 @@ function showCards(cards) {
     const cardItem = document.getElementById(card.id);
 
     setTimeout(() => {
-        cardItem.classList.add('flip')
-    },400)
+      cardItem.classList.add("flip");
+    }, 400);
 
     setTimeout(() => {
-        cardItem.classList.remove('flip');
-    },1500);
-
+      cardItem.classList.remove("flip");
+    }, 1500);
   });
 }
 
@@ -106,8 +117,8 @@ function disableCards({ cardOne, cardTwo }) {
   let cardOnePair = document.getElementById(cardOne.id);
   let cardTwoPair = document.getElementById(cardTwo.id);
 
-  cardOnePair.classList.add('click');
-  cardTwoPair.classList.add('click');
+  cardOnePair.classList.add("click");
+  cardTwoPair.classList.add("click");
 
   cardOnePair.setAttribute("disabled", true);
   cardTwoPair.setAttribute("disabled", true);
