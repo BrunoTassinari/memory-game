@@ -80,7 +80,7 @@ function verifyPlayTurn(cards) {
 
             cardOne = null;
             cardTwo = null;
-          },350);
+          }, 350);
         }
       }
 
