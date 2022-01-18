@@ -38,11 +38,11 @@ function verifyPlayTurn(cards) {
     const cardItem = document.getElementById(card.id);
     cardItem.addEventListener("click", () => {
       if (playTurn != 0) {
-        if (playTurn == 2 && cardTwo == null) {
+        if (playTurn == 2 && cardTwo == null && !cardItem.classList.contains('click')) {
           cardTwo = cardItem;
           cardTwo.classList.add("flip");
           playTurn--;
-        } else if (playTurn == 1 && cardOne == null) {
+        } else if (playTurn == 1 && cardOne == null && !cardItem.classList.contains('click')) {
           cardOne = cardItem;
           cardOne.classList.add("flip");
           playTurn = 2;
@@ -105,6 +105,9 @@ function verifyPairs({ cardOne, cardTwo }) {
 function disableCards({ cardOne, cardTwo }) {
   let cardOnePair = document.getElementById(cardOne.id);
   let cardTwoPair = document.getElementById(cardTwo.id);
+
+  cardOnePair.classList.add('click');
+  cardTwoPair.classList.add('click');
 
   cardOnePair.setAttribute("disabled", true);
   cardTwoPair.setAttribute("disabled", true);
